@@ -35,7 +35,7 @@ function getCorrectImages(event) {
     return;
   }
   inputValueGlobal = inpValue;
-
+  page = 1;
   getImagesByQuery(inpValue)
     .then(({ hits, totalHits: total }) => {
       totalHits = total;
