@@ -1,18 +1,18 @@
 // SimpleLightbox
 import SimpleLightbox from 'simplelightbox';
 import 'simplelightbox/dist/simple-lightbox.min.css';
+
+let lightbox = new SimpleLightbox('.gallery a', {
+  captionsData: 'alt',
+  captionDelay: 250,
+});
+
 // iziToast
 import iziToast from 'izitoast';
 import 'izitoast/dist/css/iziToast.min.css';
 
 const loader = document.querySelector('.loader');
 const container = document.querySelector('.gallery');
-
-// SimpleLightbox
-let lightbox = new SimpleLightbox('.gallery a', {
-  captionsData: 'alt',
-  captionDelay: 250,
-});
 
 // createGallery
 export function createGallery(image) {
@@ -59,7 +59,7 @@ export function createGallery(image) {
     )
     .join('');
 
-  container.innerHTML = markup;
+  container.insertAdjacentHTML('beforeend', markup);
   lightbox.refresh();
 }
 
@@ -83,10 +83,34 @@ export function iziToastFoo() {
   });
 }
 
+// IziToastLastFoo
+
+export function IziToastLastFoo() {
+  iziToast.show({
+    titleColor: 'white',
+    backgroundColor: '#FFA000',
+    message: "We're sorry, but you've reached the end of search results.",
+    messageColor: 'white',
+    position: 'topRight',
+    iconUrl: 'icon/notification.svg',
+    close: false,
+  });
+}
+
 // loader
 export function showLoader() {
   loader.style.display = 'block';
 }
 export function hideLoader() {
   loader.style.display = 'none';
+}
+
+// LoadMore
+const BtnLoadMore = document.querySelector('.btn-load-more');
+
+export function showLoadMoreButton() {
+  BtnLoadMore.style.display = 'block';
+}
+export function hideLoadMoreButton() {
+  BtnLoadMore.style.display = 'none';
 }

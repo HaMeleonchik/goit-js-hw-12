@@ -51,13 +51,13 @@
 /* form */
 
 .form {
-  margin-left: 783px;
+  display: flex;
+  justify-content: center;
   margin-top: 36px;
-
   margin-bottom: 32px;
 }
 
-button {
+button[type='submit'] {
   font-family: 'Montserrat', sans-serif;
   font-weight: 500;
   font-size: 16px;
@@ -74,7 +74,7 @@ button {
   margin-left: 8px;
 }
 
-button:hover {
+button[type='submit']:hover {
   background-color: #6c8cff;
 }
 
@@ -117,7 +117,11 @@ input:focus {
   box-sizing: border-box;
   animation: rotation 1s linear infinite;
   display: none;
-  margin-left: 917px;
+  margin-top: 8px;
+
+  position: absolute;
+  left: 49%;
+  transform: translateX(-50%);
 }
 .loader::after {
   content: '';
@@ -137,4 +141,32 @@ input:focus {
   100% {
     transform: rotate(360deg);
   }
+}
+
+/* load-more-button */
+.btn-load-more {
+  border-radius: 8px;
+  padding: 8px 16px;
+  min-width: 125px;
+  height: 40px;
+  background-color: #4e75ff;
+  border: none;
+
+  font-family: 'Montserrat', sans-serif;
+  font-weight: 500;
+  font-size: 16px;
+  line-height: 1.5;
+  letter-spacing: 0.04em;
+  color: #fff;
+  display: none;
+}
+.btn-load-more:hover {
+  background-color: #6c8cff;
+}
+
+.btn-wrapper {
+  display: flex;
+  justify-content: center;
+  margin-top: 32px;
+  margin-bottom: 44px;
 }
