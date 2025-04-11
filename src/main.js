@@ -36,7 +36,7 @@ function getCorrectImages(event) {
   }
   inputValueGlobal = inpValue;
   page = 1;
-  getImagesByQuery(inpValue)
+  getImagesByQuery(inputValueGlobal)
     .then(({ hits, totalHits: total }) => {
       totalHits = total;
       if (hits.length === 0) {
@@ -45,7 +45,7 @@ function getCorrectImages(event) {
         hideLoadMoreButton();
       } else {
         createGallery(hits);
-        showLoadMoreButton();
+        checkImageMaxImage();
       }
     })
     .catch(error => console.log(error))
@@ -70,9 +70,10 @@ async function LoadMoreFoo() {
     if (hits.length === 0 || page * 15 >= totalHits) {
       IziToastLastFoo();
       hideLoader();
+      hideLoadMoreButton();
     } else {
       createGallery(hits);
-      showLoadMoreButton();
+      checkImageMaxImage();
     }
 
     const card = document.querySelector('.gallery-item');
@@ -87,5 +88,12 @@ async function LoadMoreFoo() {
     IziToastLastFoo();
   } finally {
     hideLoader();
+  }
+}
+function checkImageMaxImage() {
+  if (page * 15 < totalHits) {
+    showLoadMoreButton();
+  } else {
+    hideLoadMoreButton();
   }
 }

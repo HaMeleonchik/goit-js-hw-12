@@ -109,8 +109,12 @@ export function hideLoader() {
 const BtnLoadMore = document.querySelector('.btn-load-more');
 
 export function showLoadMoreButton() {
-  BtnLoadMore.style.display = 'block';
+  if (BtnLoadMore) {
+    BtnLoadMore.style.display = 'block';
+  }
 }
 export function hideLoadMoreButton() {
-  BtnLoadMore.style.display = 'none';
+  if (BtnLoadMore) {
+    BtnLoadMore.style.display = 'none';
+  }
 }
