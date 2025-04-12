@@ -67,13 +67,18 @@ async function LoadMoreFoo() {
     page += 1;
     const { hits } = await getImagesByQuery(inputValueGlobal, page);
 
-    if (hits.length === 0 || page * 15 >= totalHits) {
+    if (hits.length === 0) {
       IziToastLastFoo();
-      hideLoader();
       hideLoadMoreButton();
+      return;
+    }
+    createGallery(hits);
+
+    if (page * 15 >= totalHits) {
+      hideLoadMoreButton;
+      IziToastLastFoo();
     } else {
-      createGallery(hits);
-      checkImageMaxImage();
+      showLoadMoreButton();
     }
 
     const card = document.querySelector('.gallery-item');
